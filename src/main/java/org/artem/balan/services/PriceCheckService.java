@@ -15,12 +15,10 @@ public class PriceCheckService {
     @Inject
     private PriceParser parser;
 
-    private String siteUrl = "https://agrotender.com.ua/traders/region_vinnica/soya";
-
     public String getPrices() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            ArrayList<Offer> offers = parser.parsePrices(siteUrl);
+            ArrayList<Offer> offers = parser.parsePrices();
             return objectMapper.writeValueAsString(offers);
         } catch (IOException e) {
             throw new RuntimeException(e);
